@@ -49,4 +49,4 @@
 
 Correction par Adrien
 
-Soucis de d'apostrophe (') à la place de backquotes (``).
+Soucis d'apostrophe (') à la place de backquotes (``).
