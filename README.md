@@ -12,35 +12,35 @@
 
 ## Liste des acteurs pour un film donné:
 
-SELECT actors.first_name, actors.last_name FROM movies_actors INNER JOIN movies ON movies_actors.id_movie = movies.id_movie INNER JOIN actors ON movies_actors.id_acteur = actors.id_actor WHERE movies.title = 'Iron Man'
+	SELECT actors.first_name, actors.last_name FROM movies_actors INNER JOIN movies ON movies_actors.id_movie = movies.id_movie INNER JOIN actors ON movies_actors.id_acteur = actors.id_actor WHERE movies.title = 'Iron Man'
 
 
 ## Liste des films pour un acteur donné:
 
-SELECT movies.title FROM movies_actors INNER JOIN movies ON movies_actors.id_movie = movies.id_movie INNER JOIN actors ON movies_actors.id_acteur = actors.id_actor WHERE actors.last_name = 'Downey'
+	SELECT movies.title FROM movies_actors INNER JOIN movies ON movies_actors.id_movie = movies.id_movie INNER JOIN actors ON movies_actors.id_acteur = actors.id_actor WHERE actors.last_name = 'Downey'
 
 
 ## Ajouter un film
 
-INSERT INTO movies ('title', 'release_date', 'duration', 'phase', 'synopsis') VALUES ('Random film', '2022-05-04', '90', '6', 'Pas de synopsis disponible.');
+	INSERT INTO movies ('title', 'release_date', 'duration', 'phase', 'synopsis') VALUES ('Random film', '2022-05-04', '90', '6', 'Pas de synopsis disponible.');
 
 
 ## Ajouter un acteur
 
-INSERT INTO actors ('last_name', 'first_name', 'date_of_birth') VALUES ('Kingsley', 'Ben', '1943-12-31');
+	INSERT INTO actors ('last_name', 'first_name', 'date_of_birth') VALUES ('Kingsley', 'Ben', '1943-12-31');
 
 
 ## Modifier un film
 
-UPDATE movies SET duration = '123' WHERE movies.title = 'Iron Man';
+	UPDATE movies SET duration = '123' WHERE movies.title = 'Iron Man';
 
 
 
 ## Supprimer un acteur
 
-DELETE FROM actors WHERE last_name = 'Kingsley'
+	DELETE FROM actors WHERE last_name = 'Kingsley'
 
 
 ## Requête pour afficher les 3 derniers acteurs ajoutés
 
-SELECT * FROM actors ORDER BY id_actor DESC LIMIT 0,3
+	SELECT * FROM actors ORDER BY id_actor DESC LIMIT 0,3
