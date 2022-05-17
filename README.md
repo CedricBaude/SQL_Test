@@ -47,6 +47,10 @@
 
 	SELECT * FROM actors ORDER BY id_actor DESC LIMIT 0,3
 
-Correction par Adrien
+Correction par Adrien : 
 
 Soucis d'apostrophe (') à la place de backquotes (``).
+
+Correction par Flo :
+
+Check ;)
