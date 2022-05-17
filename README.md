@@ -24,12 +24,12 @@
 
 ## Ajouter un film
 
-	INSERT INTO movies ('title', 'release_date', 'duration', 'phase', 'synopsis') VALUES ('Random film', '2022-05-04', '90', '6', 'Pas de synopsis disponible.');
+	INSERT INTO movies (`title`, `release_date`, `duration`, `phase`, `synopsis`) VALUES ('Random film', '2022-05-04', '90', '6', 'Pas de synopsis disponible.');
 
 
 ## Ajouter un acteur
 
-	INSERT INTO actors ('last_name', 'first_name', 'date_of_birth') VALUES ('Kingsley', 'Ben', '1943-12-31');
+	INSERT INTO actors (`last_name`, `first_name`, `date_of_birth`) VALUES ('Kingsley', 'Ben', '1943-12-31');
 
 
 ## Modifier un film
