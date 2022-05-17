@@ -1,66 +1,39 @@
-<p align="center">
-    <img src="https://img.shields.io/badge/version-1.2.0-blue" />
-</p>
+Titres et dates de sorties des films du plus récent au plus ancien:
 
-# Docker-MySQL
+SELECT title, release_date FROM `movies` ORDER BY release_date DESC
 
-A simple docker container for MySQL
-<img src="https://img.shields.io/badge/MySQL-5.7-green" />
 
-## Getting Started
+Noms, prénoms et ages des acteurs de plus de 30 ans dans l'ordre alphabétique:
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes
+SELECT first_name, last_name, (YEAR(CURRENT_TIMESTAMP)) - YEAR (date_of_birth) AS age FROM `actors` WHERE YEAR (date_of_birth) < 1992 ORDER BY last_name, first_name ASC
 
-### Prerequisites
 
-What things you need
 
-* [Git](https://git-scm.com/downloads)
-* [Docker](https://www.docker.com/get-started/)
+Liste des acteurs pour un film donné:
 
-### Installation
+SELECT actors.first_name, actors.last_name FROM movies_actors INNER JOIN movies ON movies_actors.id_movie = movies.id_movie INNER JOIN actors ON movies_actors.id_acteur = actors.id_actor WHERE movies.title = 'Iron Man'
 
-Position yourself in your project folder
-```
-cd your-project
-```
 
-Clone
-```
-git clone https://github.com/nicolas-herbez/docker-mysql.git .
-```
+Liste des films pour un acteur donné:
 
-## How to use
+SELECT movies.title FROM movies_actors INNER JOIN movies ON movies_actors.id_movie = movies.id_movie INNER JOIN actors ON movies_actors.id_acteur = actors.id_actor WHERE actors.last_name = 'Downey'
 
-### Start
+une requête pour ajouter un film
 
-Execute from root
-```
-docker-compose up -d --build
-```
+INSERT INTO movies (`title`, `release_date`, `duration`, `phase`, `synopsis`) VALUES ('Random film', '2022-05-04', '90', '6', 'Pas de synopsis disponible.');
 
-### Test with phpMyAdmin
+une requête pour ajouter un acteur
 
-Test it at this address
-<a href="http://localhost:8080/" target="_blanc"><img src="https://img.shields.io/badge/localhost-8080-blue" /></a>
+INSERT INTO actors (`last_name`, `first_name`, `date_of_birth`) VALUES ('Kingsley', 'Ben', '1943-12-31');
 
-See [environment](https://github.com/nicolas-herbez/docker-mysql/blob/main/docker-compose.yaml) for login and password
+une requête pour modifier un film
 
-### Stop
+UPDATE movies SET duration = '123' WHERE movies.title = 'Iron Man';
 
-Execute from root
-```
-docker-compose down
-```
+une requête pour supprimer un acteur
 
-## Versioning
+DELETE FROM actors WHERE last_name = 'Kingsley'
 
-We use [Semantic Versioning](http://semver.org/) for versioning
+une requête pour afficher les 3 derniers acteurs ajoutés
 
-## Authors
-
-[Nicolas Herbez](https://github.com/nicolas-herbez)
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+SELECT * FROM actors ORDER BY id_actor DESC LIMIT 0,3
